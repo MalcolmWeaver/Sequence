@@ -158,13 +158,19 @@ namespace coen79_lab6
 		}
 		
 		list_head_insert(head_ptr,start_ptr->data());
-		tail_ptr = start_ptr;
+		if(start_ptr == end_ptr){	// directions unclear as to whether include the first or exclude last in 1 node case
+			head_ptr->set_link(NULL);
+			return;
+		}
+		tail_ptr = head_ptr;	// initializing tail_ptr for lists of size at least 1
 		node* cursor = start_ptr->link();		
-		while(cursor != NULL && cursor != end_ptr){
+		while(cursor != end_ptr){
+			assert(cursor);	// if cursor is Null, it means that end ptr did not come after start cursor
 			list_insert(tail_ptr, cursor->data());
 			tail_ptr = tail_ptr->link();
 			cursor = cursor->link();		
 		}
+		tail_ptr->set_link(NULL);
 	}
 	
 	void list_print (const node* head_ptr){
