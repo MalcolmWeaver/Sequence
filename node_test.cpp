@@ -53,7 +53,7 @@ int main(int argc, char const *argv[]) {
         cout << "Full list: ";
         list_print(head);
     }
-
+*/
     // Testing list_copy_segment functionality.
     {
         cout << endl << " *** list_copy_segment tests *** " << endl;
@@ -76,10 +76,9 @@ int main(int argc, char const *argv[]) {
         cout << "Full list: ";
         list_print(list_copy_segment(my_list,1,list_length(my_list)));
     }
-	
+/*	
     // Testing list_insert_at functionality.
- */
- /*
+
     {
         cout << endl << " *** list_insert_at tests *** " << endl;
         // Insert at front
@@ -103,7 +102,7 @@ int main(int argc, char const *argv[]) {
     }
 
     // Testing list_piece functionality.
-    /*cout << endl << " *** list_occurrences tests *** " << endl;
+    cout << endl << " *** list_occurrences tests *** " << endl;
     list_insert_at(my_list, 2, 5);
     list_insert_at(my_list, 2, 5);
     cout << "The list: ";
@@ -114,8 +113,8 @@ int main(int argc, char const *argv[]) {
     cout << "Number of 3's: " << list_occurrences(my_list, 3) << endl;
     cout << "Number of 2's: " << list_occurrences(my_list, 2) << endl;
     cout << "Number of 0's: " << list_occurrences(my_list, 0) << endl;
-*/
-/*
+
+
     // Testing list_piece functionality.
     cout << endl << " *** list_remove_at tests *** " << endl;
     cout << "The list: ";
@@ -130,8 +129,8 @@ int main(int argc, char const *argv[]) {
     list_remove_at(my_list, 9);
     list_print(my_list);
 
-*/
-    
+
+  /*  
     {
         cout << endl << " *** list_remove_dups tests *** " << endl;
 
@@ -145,6 +144,7 @@ int main(int argc, char const *argv[]) {
         list_remove_dups(head_ptr);
         list_print(head_ptr);
     }
+    */
 /*    
     {
         cout << endl << " *** list_detect_loop tests *** " << endl;

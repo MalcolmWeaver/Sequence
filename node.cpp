@@ -207,7 +207,30 @@ namespace coen79_lab6
     				
     			}
     			list_insert(cursor, entry);
+    			return;
     		}
+    	}
+    	
+    	node::value_type list_remove_at(node*& head_ptr, size_t position){
+    		assert(position > 0 && position <= list_length(head_ptr));
+    		node * cursor = head_ptr;
+    		node::value_type deleted_node_data;
+    		if(position == 1){
+    			deleted_node_data = head_ptr->data();
+    			list_head_remove(head_ptr);
+    			return deleted_node_data;
+    		}
+    		else{
+    			int i = 1;
+    			for(; i < position - 1; ++i, cursor = cursor->link()){ // runs p - 2 times moving cursor from node 1 to node p - 1, so that inserting a new thing next makes it #p
+    				assert(cursor != NULL);
+    				
+    			}
+    			deleted_node_data = cursor->data();
+    			list_remove(cursor);
+    			return deleted_node_data;
+    		}
+    		
     	}
     	
     	void list_remove_dups(node* head_ptr){
@@ -224,7 +247,27 @@ namespace coen79_lab6
     			}
     		}
     	}
-
+	
+	node* list_copy_segment(node* head_ptr, size_t start, size_t finish){
+		assert(start <= finish && start >=1 && finish <= list_length(head_ptr));
+		
+		node *old_cursor = head_ptr, *new_cursor=NULL, *new_head;
+		for(size_t i = start; old_cursor != NULL, i <= finish; ++i, old_cursor=old_cursor->link()){
+			if(i == start){
+				list_head_insert(new_cursor, old_cursor->data());
+				new_head = new_cursor;
+			}
+			else{
+				list_insert(new_cursor, old_cursor->data());
+				new_cursor = new_cursor->link();
+				if(i == start+1){new_head->set_link(new_cursor);}
+			}
+			
+		}
+		return new_head;
+		
+	}
+	
 	//node* list_detect_loop (node* head_ptr){
 	//	
 	//}

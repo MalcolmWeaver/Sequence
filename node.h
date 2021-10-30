@@ -241,8 +241,8 @@ namespace coen79_lab6
     void list_piece(node* start_ptr, node* end_ptr, node*& head_ptr, node*& tail_ptr);
     size_t list_occurrences(node* head_ptr, const node::value_type& target);
     void list_insert_at(node*& head_ptr, const node::value_type& entry, size_t position);
-    //node::value_type list_remove_at(node*& head_ptr, size_t position);
-    //node* list_copy_segment(node* head_ptr, size_t start, size_t finish);
+    node::value_type list_remove_at(node*& head_ptr, size_t position);
+    node* list_copy_segment(node* head_ptr, size_t start, size_t finish);
     void list_print (const node* head_ptr);
     void list_remove_dups(node* head_ptr);
     //node* list_detect_loop (node* head_ptr);
