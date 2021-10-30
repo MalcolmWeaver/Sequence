@@ -180,5 +180,53 @@ namespace coen79_lab6
 		}
 		std::cout << std::endl;
 	}
-    
+	
+    	size_t list_occurrences(node* head_ptr, const node::value_type& target){
+		size_t count(0);
+		node * cursor = head_ptr;
+		for(; cursor != NULL; cursor = cursor->link()){
+			if(cursor->data() == target){
+				++count;
+			}
+		} 
+		return count;   	
+    	}
+    	
+    	void list_insert_at(node*& head_ptr, const node::value_type& entry, size_t position){
+    		size_t len = list_length(head_ptr); 	// does not change head ptr
+    		assert(position > 0 && position <= len + 1);
+    		node * cursor = head_ptr;
+    		if(position == 1){
+    			list_head_insert(head_ptr, entry);
+    			return;
+    		}
+    		else{
+    			int i = 1;
+    			for(; i < position - 1; ++i, cursor = cursor->link()){ // runs p - 2 times moving cursor from node 1 to node p - 1, so that inserting a new thing next makes it #p
+    				assert(cursor != NULL);
+    				
+    			}
+    			list_insert(cursor, entry);
+    		}
+    	}
+    	
+    	void list_remove_dups(node* head_ptr){
+    		// Brute force O(n^2)
+    		node* cursor1 = head_ptr, *cursor2, *tmp;
+    		for(; cursor1 != NULL; cursor1 = cursor1->link()){
+    			for(cursor2 = cursor1; cursor2->link() != NULL; ){
+    				if(cursor2->link()->data() == cursor1->data()){
+    					list_remove(cursor2);
+    				}    			
+    				else{
+    					cursor2 = cursor2->link();
+    				}
+    			}
+    		}
+    	}
+
+	//node* list_detect_loop (node* head_ptr){
+	//	
+	//}
+
 }
