@@ -13,6 +13,7 @@
 //   and the link to the next node is stored in link_field.
 
 #include "node.h"
+#include <iostream>
 #include <cassert>    // Provides assert
 #include <cstdlib>    // Provides NULL and size_t
 
@@ -20,6 +21,7 @@ using namespace std;
 
 namespace coen79_lab6
 {
+
     size_t list_length(const node* head_ptr)
     // Library facilities used: cstdlib
     {
@@ -147,6 +149,30 @@ namespace coen79_lab6
     	}
     }
 
-    
+	void list_piece(node* start_ptr, node* end_ptr, node*& head_ptr, node*& tail_ptr){
+		head_ptr = NULL;
+		tail_ptr = NULL;
+
+		if(start_ptr == NULL){
+			return;
+		}
+		
+		list_head_insert(head_ptr,start_ptr->data());
+		tail_ptr = start_ptr;
+		node* cursor = start_ptr->link();		
+		while(cursor != NULL && cursor != end_ptr){
+			list_insert(tail_ptr, cursor->data());
+			tail_ptr = tail_ptr->link();
+			cursor = cursor->link();		
+		}
+	}
+	
+	void list_print (const node* head_ptr){
+		const node* cursor = head_ptr;
+		for (; cursor != NULL; cursor = cursor->link()){
+			std::cout << "NODE: " << cursor->data() << "\t\t";
+		}
+		std::cout << std::endl;
+	}
     
 }

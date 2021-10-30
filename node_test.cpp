@@ -54,7 +54,7 @@ int main(int argc, char const *argv[]) {
         list_print(head);
     }
 
-    // Testing list_copy_segment functionality.
+    /*// Testing list_copy_segment functionality.
     {
         cout << endl << " *** list_copy_segment tests *** " << endl;
         // Just first item.
@@ -76,7 +76,7 @@ int main(int argc, char const *argv[]) {
         cout << "Full list: ";
         list_print(list_copy_segment(my_list,1,list_length(my_list)));
     }
-
+	/*
     // Testing list_insert_at functionality.
     {
         cout << endl << " *** list_insert_at tests *** " << endl;
@@ -165,6 +165,6 @@ int main(int argc, char const *argv[]) {
         if (loop_start != NULL)
             std::cout << "Loop start location is: " << loop_start->data() << std::endl;
     }
-    
+    */
     return 0;
 }
