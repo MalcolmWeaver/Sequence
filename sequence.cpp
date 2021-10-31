@@ -72,14 +72,30 @@ namespace coen79_lab6
     	void sequence::start( ){
     		if(!head_ptr)
     		{
-    		std::cout << "Nothing in the list" << std::endl;
-    		return;
+	    		std::cout << "Nothing in the list" << std::endl;
+	    		return;
     		}
     		cursor = head_ptr;
     		precursor = NULL;
     		return;
     	}
-	// void end( )
+	
+	void sequence::end( )
+	{
+		if(!head_ptr)
+    		{
+    			std::cout << "Nothing in the list" << std::endl;
+    			return;
+    		}
+    		cursor = head_ptr;
+    		precursor = NULL;
+    		while(cursor->link()){
+    			precursor = cursor;
+    			cursor = cursor->link();
+    		}
+    		assert(cursor->link() == NULL);
+    		return;
+	}
     	
     	void sequence::attach(const value_type& entry){
 		if(!is_item())
@@ -109,6 +125,35 @@ namespace coen79_lab6
 		}
 		++many_nodes;
     	}
+    	
+    	void sequence::insert(const value_type& entry){
+    		if(!is_item())
+		{
+			list_head_insert(head_ptr, entry);
+			//head_ptr is updated
+			cursor = head_ptr;
+			precursor = NULL;
+		}
+		else{
+			if(!precursor)
+			{
+			//empty list or 1 node
+				list_head_insert(head_ptr, entry);
+				cursor = head_ptr;
+				if(cursor->link())
+				{
+				tail_ptr = cursor->link();
+				}
+			}
+			else
+			{
+				list_insert(precursor, entry);
+				cursor = precursor->link(); 
+			}
+		}
+		++many_nodes;
+    	}
+    	
     	
     	//	CONST MEMBER FUNCTIONS
     	void sequence::advance( ){
