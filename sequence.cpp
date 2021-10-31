@@ -63,7 +63,7 @@ namespace coen79_lab6
     	// 	NON-CONST MEMBER FUNCTIONS
     	void sequence::operator =(const sequence& source){
 	    	
-	    	list_copy(source.head_ptr, head_ptr, tail_ptr);
+	    	list_copy(source.head_ptr, head_ptr, tail_ptr); // memory leak
 	    	std::size_t loc;
 	    	node* myCursor;
 	    	many_nodes = source.many_nodes;
@@ -120,18 +120,18 @@ namespace coen79_lab6
 		{
 			if(!precursor)
 			{
-			//empty list
-			assert(many_nodes == 0);
-			list_head_insert(head_ptr, entry);
-			cursor = head_ptr;
-			tail_ptr = head_ptr;
+				//empty list
+				assert(many_nodes == 0);
+				list_head_insert(head_ptr, entry);	// memory leak
+				cursor = head_ptr;
+				tail_ptr = head_ptr;
 			}
 			else
 			{
-			//going to the end of list
-			list_insert(precursor, entry);
-			cursor = precursor->link();
-			tail_ptr = cursor;
+				//going to the end of list
+				list_insert(precursor, entry);
+				cursor = precursor->link();
+				tail_ptr = cursor;
 			}
 		}
 		else
