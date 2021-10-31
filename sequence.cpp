@@ -62,11 +62,28 @@ namespace coen79_lab6
     
     	// 	NON-CONST MEMBER FUNCTIONS
     	void sequence::operator =(const sequence& source){
+	    	
 	    	list_copy(source.head_ptr, head_ptr, tail_ptr);
-	    	cursor = source.cursor;
-	    	precursor = source.precursor;
-	    	if(precursor){assert(precursor->link() == cursor);}
+	    	std::size_t loc;
+	    	node* myCursor;
 	    	many_nodes = source.many_nodes;
+	    	if(source.precursor == NULL){
+	    		precursor = NULL;
+	    		cursor = head_ptr;
+	    		if(tail_ptr){assert(tail_ptr->link() == NULL);}
+	    		return;
+	    	}
+	    	else
+	    	{
+	    		for(loc=1, myCursor = source.head_ptr; myCursor != source.precursor; ++loc, myCursor = myCursor->link()){
+	    			assert(myCursor != NULL);
+	    		}
+	    	
+	    		precursor = list_locate(head_ptr, loc);
+	    		cursor = precursor->link();
+	    		if(precursor){assert(precursor->link() == cursor);}
+	    		return;
+	    	}
     	}
     	
     	void sequence::start( ){
@@ -94,6 +111,7 @@ namespace coen79_lab6
     			cursor = cursor->link();
     		}
     		assert(cursor->link() == NULL);
+    		assert(precursor->link() == cursor);
     		return;
 	}
     	
@@ -152,6 +170,25 @@ namespace coen79_lab6
 			}
 		}
 		++many_nodes;
+    	}
+    	
+    	void sequence::remove_current(){
+    		assert(is_item());
+    		if(!precursor){
+    			//removing head
+			if(tail_ptr == head_ptr){tail_ptr = NULL;}
+			list_head_remove(head_ptr);
+    		}
+    		else
+    		{
+    			list_remove(precursor);
+    			cursor = precursor->link();
+    			if(!cursor){
+    				tail_ptr = precursor;
+    				return;
+    			}
+    		}
+    		--many_nodes;
     	}
     	
     	

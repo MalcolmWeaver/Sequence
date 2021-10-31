@@ -23,9 +23,10 @@ int main(int argc, const char * argv[])
 	sequence seq1, seq2;
 
 	// Testing attach
-	seq1.insert(12);
-	seq1.insert(13);
-	seq1.end();
+	// my additions
+	//seq1.insert(12);
+	//seq1.insert(13);
+	//seq1.end();
 	seq1.attach(42);
 	printSequence(seq1);
 	seq1.attach(25);
@@ -40,7 +41,7 @@ int main(int argc, const char * argv[])
 	seq1.attach(13);
 	printSequence(seq1);
 
-/*
+
 	// Test remove from end.
 	cout << " *** End Removal Test *** " << endl;
 	seq1.end();
@@ -57,9 +58,9 @@ int main(int argc, const char * argv[])
 	seq1.advance();
 	seq1.remove_current();
 	printSequence(seq1);
-*/
 
-/*
+
+
 	cout << " *** First Assignment Test *** " << endl;
 	seq2 = seq1;
 	seq1.attach(5);
@@ -67,7 +68,7 @@ int main(int argc, const char * argv[])
 	printSequence(seq2);
 	seq2.insert(18);
 	seq2.attach(92);
-	printSequence(seq2);
+	printSequence(seq2); //issues
 	cout << " *** More Assignment Tests *** " << endl;
 	sequence seqA, seqEmpty, seqOneItem, seqTenItems;
 	for (int i = 0; i < 5; i++) seqA.attach(i);
@@ -141,5 +142,5 @@ int main(int argc, const char * argv[])
 	cout << "Start: " << labSequence.current() << endl;
 	labSequence.end();
 	cout << "End: " << labSequence.current() << endl;
-*/
+
 }
