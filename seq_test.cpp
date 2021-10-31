@@ -21,7 +21,7 @@ void printSequence(sequence &s) {
 int main(int argc, const char * argv[])
 {
 	sequence seq1, seq2;
-/*
+
 	// Testing attach
 	seq1.attach(42);
 	printSequence(seq1);
@@ -30,6 +30,8 @@ int main(int argc, const char * argv[])
 	seq1.attach(2);
 	printSequence(seq1);
 	// Testing insert
+	
+	/*
 	seq1.insert(9);
 	printSequence(seq1);
 	seq1.insert(17);

@@ -32,7 +32,7 @@ using namespace std; //For copy function
 namespace coen79_lab6
 {
     // Default private member variable initialization function.
-    void sequence::init()
+    void sequence::init() // only member functions can call this. No other file should call it
     {
         //Initializing pointers to NULL
         head_ptr = NULL;
@@ -60,6 +60,7 @@ namespace coen79_lab6
     		list_clear(head_ptr);
     	}
     
+    	// 	NON-CONST MEMBER FUNCTIONS
     	void sequence::operator =(const sequence& source){
 	    	list_copy(source.head_ptr, head_ptr, tail_ptr);
 	    	cursor = source.cursor;
@@ -78,7 +79,38 @@ namespace coen79_lab6
     		precursor = NULL;
     		return;
     	}
+	// void end( )
     	
+    	void sequence::attach(const value_type& entry){
+		if(!is_item())
+		{
+			if(!precursor)
+			{
+			//empty list
+			assert(many_nodes == 0);
+			list_head_insert(head_ptr, entry);
+			cursor = head_ptr;
+			tail_ptr = head_ptr;
+			}
+			else
+			{
+			//going to the end of list
+			list_insert(precursor, entry);
+			cursor = precursor->link();
+			tail_ptr = cursor;
+			}
+		}
+		else
+		{
+			list_insert(cursor, entry);
+			precursor = cursor;
+			cursor = cursor->link();
+			if(cursor->link() == NULL){tail_ptr = cursor;} // case where cursor originally pointed to last node
+		}
+		++many_nodes;
+    	}
+    	
+    	//	CONST MEMBER FUNCTIONS
     	void sequence::advance( ){
     		assert(is_item());
     		precursor = cursor;
