@@ -21,7 +21,7 @@ void printSequence(sequence &s) {
 int main(int argc, const char * argv[])
 {
 	sequence seq1, seq2;
-
+/*
 	// Testing attach
 	seq1.attach(42);
 	printSequence(seq1);
@@ -36,7 +36,8 @@ int main(int argc, const char * argv[])
 	printSequence(seq1);
 	seq1.attach(13);
 	printSequence(seq1);
-
+*/
+/*
 	// Test remove from end.
 	cout << " *** End Removal Test *** " << endl;
 	seq1.end();
@@ -53,7 +54,9 @@ int main(int argc, const char * argv[])
 	seq1.advance();
 	seq1.remove_current();
 	printSequence(seq1);
+*/
 
+/*
 	cout << " *** First Assignment Test *** " << endl;
 	seq2 = seq1;
 	seq1.attach(5);
@@ -135,5 +138,5 @@ int main(int argc, const char * argv[])
 	cout << "Start: " << labSequence.current() << endl;
 	labSequence.end();
 	cout << "End: " << labSequence.current() << endl;
-
+*/
 }
