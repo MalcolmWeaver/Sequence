@@ -268,8 +268,16 @@ namespace coen79_lab6
 		
 	}
 	
-	//node* list_detect_loop (node* head_ptr){
-	//	
-	//}
+	node* list_detect_loop (node* head_ptr){
+		node * cursor1 = head_ptr, *cursor2=head_ptr;
+		for(; cursor1 != NULL; cursor1 = cursor1->link()){
+			for(cursor2=cursor1->link(); cursor2 != NULL; cursor2=cursor2->link()){
+				if(cursor2 == cursor1){
+					return cursor1;
+				}
+			}
+		}
+		return NULL;	
+	}
 
 }
