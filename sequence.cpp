@@ -62,6 +62,7 @@ namespace coen79_lab6
     
     	// 	NON-CONST MEMBER FUNCTIONS
     	void sequence::operator =(const sequence& source){
+    		list_clear(this->head_ptr);	// must free old stuff before changine everything
 	    	
 	    	list_copy(source.head_ptr, head_ptr, tail_ptr); // memory leak
 	    	std::size_t loc;
